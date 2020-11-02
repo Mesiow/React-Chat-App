@@ -5,52 +5,24 @@ import MessageList from './Components/MessageList';
 import SendMessageForm from './Components/SendMessageForm';
 import RoomList from './Components/RoomList';
 import NewRoomForm from './Components/NewRoomForm';
-
+import {socket} from './Socket';
 
 
 function App() {
-  /*
-  const [yourID, setYourID] = useState();
-  const [messages, setMessages] = useState([]);
-  const [message, setMessage] = useState("");
-
-  const socketRef = useRef();
+  //const [message, setMessage] = useState({name: "", message: ""});
+  const [messageList, setMessageList] = useState([]);
 
   useEffect(() => {
-    socketRef.current = io.connect("/");
-
-    //listen to event your id
-    socketRef.current.on("your id", id => {
-      setYourID(id);
-    });
-
-    socketRef.current.on("message", (message) =>{
-
+    //add new name and message to message list when we receive a message event
+    socket.on("message", ({name, text}) => {
+      setMessageList([...messageList, {name, text}]);
     });
   })
-
-  const receivedMessage = (message) => {
-    setMessages(oldMsgs => [...oldMsgs, message]);
-  };
-
-  const sendMessage = (e) => {
-    e.preventDefault();
-    const msgObj = {
-      body: message,
-      id: yourID,
-    };
-    setMessage("");
-    socketRef.current.emit("send message", msgObj);
-  };
-
-  const handleChange = (e) => {
-    setMessage(e.target.value);
-  }*/
 
   return (
     <div className="App">
         <RoomList />
-        <MessageList />
+        <MessageList messages={messageList}/>
         <SendMessageForm />
         <NewRoomForm />
     </div>
