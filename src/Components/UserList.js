@@ -1,7 +1,7 @@
 import React from 'react';
 import {Input} from 'semantic-ui-react';
 
-function RoomList(){
+function UserList(){
     const roomlist = [
         {
             number: 1,
@@ -19,7 +19,7 @@ function RoomList(){
     return(
         <div className="rooms-list">
             <ul>
-                <h3>Your Rooms:</h3>
+                <h3>Users Connected:</h3>
                 {roomlist.map(room => {
                     return (
                         <li>
@@ -34,4 +34,4 @@ function RoomList(){
     );
 }
 
-export default RoomList;
+export default UserList;

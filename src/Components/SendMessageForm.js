@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import EnterNameForm from './EnterNameForm';
+import EnterNameModal from './EnterNameModal';
 import '../App.css';
 import { Button } from 'semantic-ui-react'
 import {socket} from '../Socket';
@@ -27,7 +27,7 @@ function SendMessageForm(){
 
     return(
         <div>
-        <EnterNameForm handleNameChange={handleNameChange} />
+        <EnterNameModal handleNameChange={handleNameChange} />
         <form onSubmit={onMessageSubmit} className="send-message-form">
             <input 
             onChange={handleMessageChange}
