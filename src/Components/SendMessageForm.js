@@ -9,7 +9,6 @@ function SendMessageForm(){
 
     const handleMessageChange = (e) => {
         setMessage({name: message.name, text: e.target.value});
-        console.log(e.target.value);
     }
 
     const handleNameChange = (e) => {
@@ -30,6 +29,7 @@ function SendMessageForm(){
         <EnterNameModal name={message.name} handleNameChange={handleNameChange} />
         <form onSubmit={onMessageSubmit} className="send-message-form">
             <Input
+            inverted
             onChange={handleMessageChange}
             value={message.text} 
             fluid 

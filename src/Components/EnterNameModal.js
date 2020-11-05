@@ -25,7 +25,6 @@ function EnterNameModal(props){
 
     const handleConnect = () =>{
       dispatch({type: 'close'});
-      console.log("User ", name + " connected");
       socket.emit("connected", name); //emit connection event to all clients
     }
 

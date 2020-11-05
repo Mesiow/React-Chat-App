@@ -15,7 +15,7 @@ function UserList(props){
                         <List.Header>
                             <Icon style={{color: "#3ad282"}}
                             name="circle" size="small"/>
-                            {user.name}
+                            {user.name} 
                         </List.Header>
                     </List.Content>
                 </List.Item>
