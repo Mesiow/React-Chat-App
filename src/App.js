@@ -17,20 +17,25 @@ const gridStyles={
 
 
 function App() {
-  //const [message, setMessage] = useState({name: "", message: ""});
   const [messageList, setMessageList] = useState([]);
   const [usersConnected, setUsersConnected] = useState([]);
 
   useEffect(() => {
     //On user connected event
-    socket.on("connected", name => {
-      console.log(name + " added to online");
-      setUsersConnected([...usersConnected, name]);
+    socket.on("connected", (connectedClients) => {
+      //update usersConnected with connected clients and add new name to it
+      usersConnected.splice(0, usersConnected.length);
+      var newClients = usersConnected.concat(connectedClients);
+      setUsersConnected(newClients);
+    });
+    socket.on("disconnect", name => {
+      //remove disconnected user from the list
+      //filter out disconnected user if equal to current user in the list
+      setUsersConnected(usersConnected.filter(user => user.name !== name));
     });
     //Message sent event
     //add new name and message to message list when we receive a message event
     socket.on("message", ({name, text}) => {
-      console.log("socket on message");
       setMessageList([...messageList, {name, text}]);
     });
   })
