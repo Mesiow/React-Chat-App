@@ -1,5 +1,5 @@
 const app = require("express")();
-const http = require("https").createServer(app);
+const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 
 var connectedClients = [];
@@ -26,7 +26,7 @@ io.on("connection", socket => {
     });
 });
 
-const port = 4000 || process.env.port;
+const port = process.env.PORT || 4000; 
 http.listen(port, function(){
     console.log("listening on port", port);
 });
