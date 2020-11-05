@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import EnterNameModal from './EnterNameModal';
 import '../App.css';
-import { Button } from 'semantic-ui-react'
+import { Button, Input } from 'semantic-ui-react'
 import {socket} from '../Socket';
 
 function SendMessageForm(){
@@ -29,13 +29,20 @@ function SendMessageForm(){
         <div>
         <EnterNameModal handleNameChange={handleNameChange} />
         <form onSubmit={onMessageSubmit} className="send-message-form">
-            <input 
+           {/* <input 
             onChange={handleMessageChange}
             value={message.text}
             placeholder="Type a message" 
             type="text"
+           />*/}
+            <Input
+            onChange={handleMessageChange}
+            value={message.text} 
+            fluid 
+            action={{icon:"send"}} 
+            placeholder="Type A Message..." 
             />
-            <Button id="send-message-btn" style={{marginLeft:"2px", marginRight:"0"}}inverted color="blue">Send</Button>
+            {/*<Button style={{marginLeft:"2px", marginRight:"0"}}inverted color="blue">Send</Button>*/}
         </form>
         </div>
     );
