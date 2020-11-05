@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input} from 'semantic-ui-react';
+import {Input, Icon, List} from 'semantic-ui-react';
 
 function UserList(){
     const roomlist = [
@@ -18,18 +18,32 @@ function UserList(){
     ];
     return(
         <div className="rooms-list">
-            <ul>
-                <h3>Users Connected:</h3>
-                {roomlist.map(room => {
-                    return (
-                        <li>
-                            <a href="#">
-                                {room.type}
-                            </a>
-                        </li>
-                    );
-                })}
-            </ul>
+          
+            <h3><Icon circular inverted name="users"/>Users Connected</h3>
+            <hr/>
+            
+            <List animated verticalAlign='middle'>
+                <List.Item>
+                    <List.Content>
+                        <List.Header>
+                            <Icon style={{color: "#3ad282"}}
+                            name="circle" size="small"/>
+                            Helen
+                        </List.Header>
+                    </List.Content>
+                </List.Item>
+                <List.Item>
+                    <List.Content>
+                        <List.Header>Christian</List.Header>
+                    </List.Content>
+                </List.Item>
+                <List.Item>
+                    <List.Content>
+                        <List.Header>Daniel</List.Header>
+                    </List.Content>
+                </List.Item>
+            </List>
+            
         </div>
     );
 }
