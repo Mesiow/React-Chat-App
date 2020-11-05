@@ -22,6 +22,12 @@ function App() {
   const [usersConnected, setUsersConnected] = useState([]);
 
   useEffect(() => {
+    //On user connected event
+    socket.on("connected", name => {
+      console.log(name + " added to online");
+      setUsersConnected([...usersConnected, name]);
+    });
+    //Message sent event
     //add new name and message to message list when we receive a message event
     socket.on("message", ({name, text}) => {
       console.log("socket on message");
@@ -36,7 +42,7 @@ function App() {
         style={gridStyles}>
         <Grid.Row stretched>
           <Grid.Column style={{width:"30%", maxHeight:"75vh"}}>
-              <UserList />
+              <UserList usersConnected={usersConnected}/>
           </Grid.Column>
           <Grid.Column style={{width:"70%",maxHeight:"75vh"}}>
             <MessageList messages={messageList}/>

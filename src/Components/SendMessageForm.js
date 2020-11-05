@@ -27,14 +27,8 @@ function SendMessageForm(){
 
     return(
         <div>
-        <EnterNameModal handleNameChange={handleNameChange} />
+        <EnterNameModal name={message.name} handleNameChange={handleNameChange} />
         <form onSubmit={onMessageSubmit} className="send-message-form">
-           {/* <input 
-            onChange={handleMessageChange}
-            value={message.text}
-            placeholder="Type a message" 
-            type="text"
-           />*/}
             <Input
             onChange={handleMessageChange}
             value={message.text} 

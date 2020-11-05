@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {Input, Modal, Button} from 'semantic-ui-react';
 import '../App.css';
+import {socket} from '../Socket';
 
 
 function modalReducer(state, action){
@@ -20,7 +21,14 @@ function EnterNameModal(props){
             size: 'mini'
         });
     const {open , size} = state;
-    const {handleNameChange} = props;
+    const {name, handleNameChange} = props;
+
+    const handleConnect = () =>{
+      dispatch({type: 'close'});
+      console.log("User ", name + " connected");
+      socket.emit("connected", name); //emit connection event to all clients
+    }
+
     return(
     <>
         <Modal
@@ -32,15 +40,14 @@ function EnterNameModal(props){
         <Modal.Content>
             <Input fluid 
                 id="name-input"
-                onChange={handleNameChange} 
+                onChange={handleNameChange}
                 icon="user"
                 iconPosition="left" 
                 placeholder="Enter A Name" 
             />
-   
         </Modal.Content>
         <Modal.Actions>
-          <Button positive onClick={() => dispatch({ type: 'close' })}>
+          <Button positive onClick={handleConnect}>
             Connect
           </Button>
         </Modal.Actions>
