@@ -176,6 +176,7 @@ html, body {
 }
 
 .send-message-form {
+  padding-top: 4px;
   background: var(--send-message-form);
   /*display: flex;*/
 }
