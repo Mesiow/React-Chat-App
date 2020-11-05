@@ -5,21 +5,21 @@ function UserList(props){
     const {usersConnected} = props;
     return(
         <div className="rooms-list">
-          
             <h3><Icon circular inverted name="users"/>Users Connected</h3>
             <hr/>
-            
             <List animated verticalAlign='middle'>
                 {usersConnected.map(user => {
-                    return (<List.Item>
+                return (
+                <List.Item key={user.id}>
                     <List.Content>
                         <List.Header>
                             <Icon style={{color: "#3ad282"}}
                             name="circle" size="small"/>
-                            {user}
+                            {user.name}
                         </List.Header>
                     </List.Content>
-                    </List.Item>);
+                </List.Item>
+                );
                 })}
             </List>
             
