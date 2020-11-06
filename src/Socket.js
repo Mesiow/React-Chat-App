@@ -3,6 +3,6 @@ import io from 'socket.io-client';
 const local = "http://localhost:4000";
 const socketURL = "/";
 const siteURL = "https://evening-ocean-58732.herokuapp.com/";
-const socket = io(siteURL);
+const socket = io.connect();
 
 export {socket};
