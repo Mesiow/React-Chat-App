@@ -37,7 +37,6 @@ function App() {
     //add new name and message to message list when we receive a message event
     //.once to prevent multiple events at once
     socket.once("message", ({name, text}) => {
-      console.log("message");
       setMessageList([...messageList, {name, text}]);
     });
   }, [messageList])
