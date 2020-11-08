@@ -1,9 +1,19 @@
 const express = require("express");
 const app = express();
 const http = require("http").createServer(app);
-const io = require("socket.io")(http);
+const cors = require("cors");
+const io = require("socket.io")(http, {wsEngine: 'ws'});
 
 app.use(express.static(__dirname + '../build'));
+app.use(cors());
+
+
+//server route
+const router = express.Router();
+router.get("/", (req, res) => {
+    res.send({response: "Server is up and running"}).status(200);
+});
+app.use(router);
 
 var connectedClients = [];
 
