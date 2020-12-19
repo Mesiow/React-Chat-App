@@ -1,3 +1,8 @@
+# React Chat Room App
+Built with React for the frontend and
+Express and Socket.io for the backend
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
